@@ -1,69 +1,77 @@
-# React + TypeScript + Vite
+# Altave Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend do Projeto Integrador **Altave** — **React + TypeScript + Vite + Tailwind CSS v4**.  
+Este README foi escrito para que qualquer pessoa do time consiga clonar, instalar e rodar sem complicação.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 Tecnologias usadas
 
-## Expanding the ESLint configuration
+| Tecnologia | Para que serve |
+| --- | --- |
+| **React 18** | Biblioteca de UI baseada em componentes. |
+| **TypeScript 5** | Tipagem estática para JavaScript. |
+| **Vite 7** | Dev server e bundler muito rápido. |
+| **Tailwind CSS v4** | Framework CSS baseado em utilitários (ex.: `p-4`, `text-blue-600`). |
+| **PostCSS + @tailwindcss/postcss** | Pipeline de CSS usado pelo Tailwind v4. |
+| **ESLint** | Padronização e boas práticas no código. |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ✅ Versões recomendadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Node.js**: `23.x` (Current) — Node 20 LTS também funciona
+- **npm**: `10.x`
+- **Vite**: `7.1.x`
+- **Tailwind**: `v4`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Verifique suas versões:
+```bash
+node -v
+npm -v
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🚀 Como rodar o projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1) Pré-requisitos
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Instalar Node.js (inclui o npm):
+	•	Windows/Mac: https://nodejs.org → baixar o instalador.
+	•	macOS (Homebrew): brew install node
+	•	Linux (Ubuntu/Debian):
+
+
+2) Clonar o repositório
+git clone https://github.com/<usuario-ou-org>/altave-front.git
+cd altave-front
+
+3) Instalar dependências
+npm install
+
+4) Rodar em desenvolvimento
+npm run dev
+Abra a URL mostrada no terminal, ex.: http://localhost:5173.
+
+🧱 Estrutura de pastas
+altave-front/
+├─ public/                  # assets estáticos
+├─ src/
+│  ├─ assets/               # imagens/ícones
+│  ├─ App.tsx               # componente raiz
+│  ├─ index.css             # Tailwind v4
+│  └─ main.tsx              # entrada React
+├─ index.html               # HTML base
+├─ postcss.config.js        # PostCSS + Tailwind
+├─ tailwind.config.js       # config do Tailwind
+├─ vite.config.ts           # config do Vite
+├─ package.json
+└─ README.md
+
+🧰 Scripts npm
+npm run dev       # servidor de desenvolvimento
+npm run build     # build de produção (gera /dist)
+npm run preview   # serve o build localmente
+
+🧯 Problemas comuns
+	•	Página em branco: confira se index.html aponta para src/main.tsx e existe <div id="root"></div>.
+	•	Port 5173 in use: Vite usa outra porta (5174, 5175). Veja no terminal.
+	•	Erro do Tailwind v4/PostCSS:
